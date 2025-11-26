@@ -1,0 +1,110 @@
+#######################################
+# GLOBAL IGNORE (OS + Editor)
+#######################################
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+*.iml
+
+# Temp / backup
+*.tmp
+*.bak
+*~
+*.swp
+*.swo
+
+#######################################
+# BACKEND (JAVA / SPRING BOOT)
+#######################################
+
+# Maven build directory
+backend/target/
+
+# Maven files
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Logs
+*.log
+backend/log/
+backend/logs/
+
+# Compiled classes
+*.class
+
+# JAR / WAR
+*.jar
+*.war
+*.ear
+
+# IntelliJ / Eclipse / STS
+backend/.project
+backend/.classpath
+backend/.settings/
+backend/.springBeans
+
+# Java launcher state
+*.javac_state
+
+# Environment & secret configs
+backend/*.env
+backend/*.properties
+backend/application-local.properties
+backend/application-dev.properties
+
+#######################################
+# FRONTEND (REACT / NODE)
+#######################################
+
+# Node modules
+frontend/node_modules/
+
+# React build outputs
+frontend/build/
+frontend/dist/
+
+# Caches
+frontend/.cache/
+frontend/.vite/
+frontend/parcel-cache/
+frontend/*.cache
+
+# Logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Environment variables
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+#######################################
+# GLOBAL BINARIES / PACKAGES
+#######################################
+
+# Package locks (optional)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+#######################################
+# OTHER OPTIONAL IGNORE RULES
+#######################################
+
+# VSCode Java debugging
+.vscode/
+
+# Uploaded files / media (if any)
+uploads/
+storage/

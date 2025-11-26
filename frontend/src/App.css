@@ -1,0 +1,371 @@
+:root {
+  --bg: #030712;
+  --bg-alt: #05001a;
+  --card: #050816;
+  --muted: #9ca3af;
+  --accent: #ffcb05;
+  --accent-soft: rgba(255, 203, 5, 0.25);
+  --glass: rgba(15, 23, 42, 0.8);
+  --outline: rgba(56, 189, 248, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* 🌌 Full-page background */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background:
+    radial-gradient(circle at 0% 0%, #1d2b64 0%, transparent 55%),
+    radial-gradient(circle at 100% 0%, #42275a 0%, transparent 55%),
+    radial-gradient(circle at 50% 100%, #0f172a 0%, #020617 65%);
+  color: #e5ecff;
+}
+
+/* ✨ Centered container */
+.container {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 20px;
+}
+
+/* Title */
+header h1,
+h1 {
+  margin: 0 0 6px 0;
+  font-size: 32px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+header h1::before,
+h1::before {
+  content: "⚡";
+  font-size: 22px;
+}
+
+.subtitle {
+  margin: 0 0 18px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* 🔍 Search bar */
+.search-form,
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.search-form input,
+form input {
+  flex: 1;
+  padding: 11px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  outline: none;
+  background: rgba(15, 23, 42, 0.7);
+  color: #e5ecff;
+  font-size: 15px;
+  backdrop-filter: blur(12px);
+  transition: border 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-form input:focus,
+form input:focus {
+  border-color: var(--outline);
+  box-shadow: 0 0 0 1px var(--outline);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.search-form button,
+form button {
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #facc15, #f97316);
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-form button:hover,
+form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.45);
+}
+
+.search-form button:active,
+form button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 18px rgba(251, 191, 36, 0.3);
+}
+
+/* Info / error text */
+.info {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.error {
+  color: #fecaca;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/* 🧊 The main Pokémon card */
+.card {
+  position: relative;
+  margin-top: 16px;
+  padding: 22px 22px 20px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%),
+              radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.18), transparent 55%),
+              var(--glass);
+  box-shadow:
+    0 18px 50px rgba(15, 23, 42, 0.9),
+    0 0 0 1px rgba(148, 163, 184, 0.25);
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 22px;
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+
+/* Glowing border accent */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 220deg,
+    rgba(56, 189, 248, 0.9),
+    rgba(251, 191, 36, 0.75),
+    rgba(168, 85, 247, 0.9),
+    rgba(56, 189, 248, 0.9)
+  );
+  opacity: 0.3;
+  z-index: -1;
+  filter: blur(18px);
+}
+
+/* Left side (image + basic info) */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pokemon-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: #fef9c3;
+  text-shadow: 0 0 12px rgba(250, 204, 21, 0.4);
+}
+
+.pokemon-name span {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.pokemon-image {
+  max-width: 180px;
+  margin-top: 8px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 10px 25px rgba(15, 23, 42, 0.9));
+}
+
+/* Basic info group */
+.info {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.info p {
+  margin: 3px 0;
+}
+
+.info strong {
+  color: #e5ecff;
+}
+
+/* Right side (stats + extra) */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.right h3 {
+  margin: 0 0 4px 0;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e5ecff;
+}
+
+/* Stats */
+.stats {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 9px;
+  border-radius: 9px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.stat-name {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.stat-value {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Flavor text & extra info */
+.flavor {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #e5ecff;
+  line-height: 1.5;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 11px;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.badge.legendary {
+  border-color: rgba(251, 191, 36, 0.8);
+  background: rgba(251, 191, 36, 0.08);
+}
+
+/* Footer */
+.footer {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+/* Make card two-column and centered content nicely */
+.card {
+  position: relative;
+  margin-top: 16px;
+  padding: 22px 22px 20px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%),
+              radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.18), transparent 55%),
+              var(--glass);
+  box-shadow:
+    0 18px 50px rgba(15, 23, 42, 0.9),
+    0 0 0 1px rgba(148, 163, 184, 0.25);
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 22px;
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+
+/* Left & right columns */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Make headings inside the card left aligned */
+.card h2,
+.card h3 {
+  text-align: left;
+}
+
+/* Pokémon name styling */
+.pokemon-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: #fef9c3;
+}
+
+.pokemon-name span {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Image aligned nicely on top-right of left column */
+.pokemon-image {
+  max-width: 160px;
+  margin-top: 8px;
+  align-self: flex-start;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 10px 25px rgba(15, 23, 42, 0.9));
+}
+
+/* Two-column area becomes one column on small screens */
+@media (max-width: 768px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+
+  .pokemon-image {
+    max-width: 140px;
+  }
+}
+
+
+/* 📱 Responsive: stack columns on small screens */
+@media (max-width: 768px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+
+  .pokemon-image {
+    max-width: 150px;
+  }
+}
